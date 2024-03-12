@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node.js News</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+</head>
+<header>
+  <%- include('./navbar') %>
+  </header>
+  
+<body>
+  
+
+  <div class="wrapper">
+    <% if (articles && articles.length > 0) { %>
+      <div class="news">
+        <% for (const article of articles) { %>
+          <a href="<%= article.url %>" class="news__card">
+            <% if (article.urlToImage) { %>
+              <img src="<%= article.urlToImage %>" alt="<%= article.title %>" class="news__image">
+            <% } else { %>
+              <img src="/img/default.png" alt="<%= article.title %>" class="news__image1">
+            <% } %>
+            <div class="news__content">
+              <h2 class="news__title"><%= article.title %></h2>
+              <% if (article.description) { %>
+                <p class="news__description"><%= article.description.substring(0, 100) + "..." %></p>
+              <% } else { %>
+                <p class="news__description">No description available.</p>
+              <% } %>
+            </div>
+          </a>
+        <% } %>
+      </div>
+    <% } else { %>
+      <div class="col">
+        <p>No news articles found.</p>
+      </div>
+    <% } %>
+  </div>
+</body>
+</
